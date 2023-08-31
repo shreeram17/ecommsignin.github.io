@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>eCommerce Sign Up & Sign In</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    padding: 20px;
+    text-align: center;
+  }
+  .tab {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+    color: #007BFF;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .active-tab {
+    background-color: #007BFF;
+    color: #fff;
+  }
+  .form {
+    display: none;
+    padding: 20px 0;
+  }
+  .form.active {
+    display: block;
+  }
+  .form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  .form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="tabs">
+    <div class="tab active-tab" onclick="showForm('sign-up')">Sign Up</div>
+    <div class="tab" onclick="showForm('sign-in')">Sign In</div>
+  </div>
+  <div class="form sign-in" id="sign-in">
+    <h2>Sign In</h2>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button>Sign In</button>
+    <p><input type="checkbox" id="Remember me">Remember me</p>
+  </div>
+  <div class="form sign-up" id="sign-up">
+    <h2>Sign Up</h2>
+    <input type="text" placeholder="Full Name">
+    <input type="text" placeholder="Country">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <input type="password" placeholder="Confirm Password">
+    <button>Sign Up</button>
+  </div>
+</div>
+<script>
+  function showForm(formId) {
+    const forms = document.querySelectorAll('.form');
+    const tabs = document.querySelectorAll('.tab');
+
+    forms.forEach(form => {
+      form.classList.remove('active');
+    });
+
+    tabs.forEach(tab => {
+      tab.classList.remove('active-tab');
+    });
+
+    const selectedForm = document.getElementById(formId);
+    selectedForm.classList.add('active');
+
+    const selectedTab = document.querySelector(`[onclick="showForm('${formId}')"]`);
+    selectedTab.classList.add('active-tab');
+  }
+</script>
+</body>
+</html>
